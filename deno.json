@@ -12,7 +12,7 @@
     "types": ["lume/types.ts"]
   },
   "tasks": {
-    "lume": "deno task generate-assets && deno run -A --env-file=.env lume/cli.ts",
+    "lume": "deno task generate-assets && deno run -A lume/cli.ts",
     "generate-assets": "deno run -A tools/generate-assets.ts",
     "build": "deno task lume",
     "serve": "deno task lume -s"
