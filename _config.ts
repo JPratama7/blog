@@ -15,6 +15,10 @@ import transformImages from "lume/plugins/transform_images.ts";
 import { feedTitle, siteDescription, siteTitle } from "./constants.ts";
 import checkUrls from "lume/plugins/check_urls.ts";
 import metas from "lume/plugins/metas.ts";
+import inline from "lume/plugins/inline.ts";
+import terser from "lume/plugins/terser.ts";
+import lightningCSS from "lume/plugins/lightningcss.ts";
+
 import { sharedWebiconWebp } from "@assets";
 
 const baseUrl = Deno.env.get("BASE_URL") ?? "https://example.com/";
@@ -33,6 +37,37 @@ const site = lume(
   },
 );
 
+site.data("metas", {
+  site: siteTitle,
+  title: `=title || ${siteTitle}`,
+  description: `=description || ${siteDescription}`,
+  icon: sharedWebiconWebp,
+  lang: "en",
+  generator: true,
+});
+
+site.data("layout", "layouts/page.tsx");
+site.data("type", "page");
+
+site.data("layout", "layouts/post.tsx", "/content/posts");
+site.data("type", "post", "/content/posts");
+
+site.data("title", "License", "/LICENSE.md");
+site.data(
+  "description",
+  "License and usage terms for the content of this blog.",
+  "/LICENSE.md",
+);
+
+site.add("styles");
+site.add("scripts");
+site.add("assets");
+
+site.ignore("README.md");
+
+site.use(lightningCSS());
+site.use(terser());
+site.use(inline());
 site.use(jsx());
 site.use(mdx());
 site.use(date());
@@ -72,34 +107,7 @@ site.use(
     strict: true,
   }),
 );
-
-site.data("metas", {
-  site: siteTitle,
-  title: `=title || ${siteTitle}`,
-  description: `=description || ${siteDescription}`,
-  icon: sharedWebiconWebp,
-  lang: "en",
-  generator: true,
-});
-
-site.data("layout", "layouts/page.tsx");
-site.data("type", "page");
-
-site.data("layout", "layouts/post.tsx", "/content/posts");
-site.data("type", "post", "/content/posts");
-
-site.data("title", "License", "/LICENSE.md");
-site.data(
-  "description",
-  "License and usage terms for the content of this blog.",
-  "/LICENSE.md",
-);
-
-site.copy("styles");
-site.copy("scripts");
-site.add("assets");
-
-site.ignore("README.md");
+site.use(inline());
 
 interface TocItem {
   text: string;
