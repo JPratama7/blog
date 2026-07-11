@@ -3,6 +3,8 @@
 
 # Lume output
 _site/
+_cache
+assetPaths.ts
 
 # OS files
 .DS_Store
