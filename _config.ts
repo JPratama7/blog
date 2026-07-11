@@ -9,9 +9,11 @@ import codeHighlight from "lume/plugins/code_highlight.ts";
 import sitemap from "lume/plugins/sitemap.ts";
 import feed from "lume/plugins/feed.ts";
 import robots from "lume/plugins/robots.ts";
+import basePath from "lume/plugins/base_path.ts";
 import picture from "lume/plugins/picture.ts";
 import transformImages from "lume/plugins/transform_images.ts";
 import { feedTitle, siteDescription } from "./constants.ts";
+import checkUrls from "lume/plugins/check_urls.ts";
 
 const baseUrl = Deno.env.get("BASE_URL") ?? "https://example.com/";
 
@@ -29,6 +31,12 @@ const site = lume(
   },
 );
 
+site.use(basePath());
+site.use(
+  checkUrls({
+    strict: true,
+  }),
+);
 site.use(jsx());
 site.use(mdx());
 site.use(date());
