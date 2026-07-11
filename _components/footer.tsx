@@ -14,36 +14,48 @@ export default function Footer() {
         <p class="footer-license">
           <a href="/license/">License</a>
         </p>
-        <ul class="footer-social" aria-label="Social links">
+        <ul class="footer-links" aria-label="Footer links">
+          {linkedin && (
+            <li>
+              <a
+                href={`https://www.linkedin.com/in/${linkedin}`}
+                target="_blank"
+                rel="noopener noreferrer"
+                aria-label="LinkedIn"
+              >
+                LinkedIn
+              </a>
+            </li>
+          )}
+          {instagram && (
+            <li>
+              <a
+                href={`https://www.instagram.com/${instagram}`}
+                target="_blank"
+                rel="noopener noreferrer"
+                aria-label="Instagram"
+              >
+                Instagram
+              </a>
+            </li>
+          )}
+          {github && (
+            <li>
+              <a
+                href={`https://github.com/${github}`}
+                target="_blank"
+                rel="noopener noreferrer"
+                aria-label="GitHub"
+              >
+                GitHub
+              </a>
+            </li>
+          )}
           <li>
-            <a
-              href={`https://www.linkedin.com/in/${linkedin}`}
-              target="_blank"
-              rel="noopener noreferrer"
-              aria-label="LinkedIn"
-            >
-              LinkedIn
-            </a>
+            <a href="/sitemap.xml">Sitemap</a>
           </li>
           <li>
-            <a
-              href={`https://www.instagram.com/${instagram}`}
-              target="_blank"
-              rel="noopener noreferrer"
-              aria-label="Instagram"
-            >
-              Instagram
-            </a>
-          </li>
-          <li>
-            <a
-              href={`https://github.com/${github}`}
-              target="_blank"
-              rel="noopener noreferrer"
-              aria-label="GitHub"
-            >
-              GitHub
-            </a>
+            <a href="/feed.rss">RSS</a>
           </li>
         </ul>
       </div>
