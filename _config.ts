@@ -31,12 +31,6 @@ const site = lume(
   },
 );
 
-site.use(basePath());
-site.use(
-  checkUrls({
-    strict: true,
-  }),
-);
 site.use(jsx());
 site.use(mdx());
 site.use(date());
@@ -67,6 +61,13 @@ site.use(
       content: "=content",
       lang: "en",
     },
+  }),
+);
+
+site.use(basePath());
+site.use(
+  checkUrls({
+    strict: true,
   }),
 );
 
