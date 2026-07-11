@@ -1,6 +1,6 @@
 import Nav from "../../_components/nav.tsx";
 import Footer from "../../_components/footer.tsx";
-import { siteDescription, siteTitle } from "../../constants.ts";
+import { siteTitle } from "../../constants.ts";
 import { sharedWebiconWebp } from "@assets";
 
 export default function BaseLayout(
@@ -8,14 +8,12 @@ export default function BaseLayout(
 ) {
   const {
     title,
-    description,
     children,
     theme = "default",
     page,
   } = data;
 
   const pageTitle = title ? `${title} | ${siteTitle}` : siteTitle;
-  const metaDescription = description ?? siteDescription;
 
   return (
     <html lang="en">
@@ -23,7 +21,6 @@ export default function BaseLayout(
         <meta charSet="utf-8" />
         <meta name="viewport" content="width=device-width, initial-scale=1" />
         <title>{pageTitle}</title>
-        <meta name="description" content={metaDescription} />
         <link rel="icon" type="image/x-icon" href={sharedWebiconWebp} />
         <link rel="preconnect" href="https://fonts.googleapis.com" />
         <link

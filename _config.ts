@@ -12,8 +12,10 @@ import robots from "lume/plugins/robots.ts";
 import basePath from "lume/plugins/base_path.ts";
 import picture from "lume/plugins/picture.ts";
 import transformImages from "lume/plugins/transform_images.ts";
-import { feedTitle, siteDescription } from "./constants.ts";
+import { feedTitle, siteDescription, siteTitle } from "./constants.ts";
 import checkUrls from "lume/plugins/check_urls.ts";
+import metas from "lume/plugins/metas.ts";
+import { sharedWebiconWebp } from "@assets";
 
 const baseUrl = Deno.env.get("BASE_URL") ?? "https://example.com/";
 
@@ -63,12 +65,22 @@ site.use(
     },
   }),
 );
+site.use(metas());
 site.use(basePath());
 site.use(
   checkUrls({
     strict: true,
   }),
 );
+
+site.data("metas", {
+  site: siteTitle,
+  title: `=title || ${siteTitle}`,
+  description: `=description || ${siteDescription}`,
+  icon: sharedWebiconWebp,
+  lang: "en",
+  generator: true,
+});
 
 site.data("layout", "layouts/page.tsx");
 site.data("type", "page");
