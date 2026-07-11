@@ -18,6 +18,7 @@ import metas from "lume/plugins/metas.ts";
 import inline from "lume/plugins/inline.ts";
 import terser from "lume/plugins/terser.ts";
 import lightningCSS from "lume/plugins/lightningcss.ts";
+import minifyHTML from "lume/plugins/minify_html.ts";
 
 import { sharedWebiconWebp } from "@assets";
 
@@ -101,13 +102,14 @@ site.use(
   }),
 );
 site.use(metas());
+site.use(inline());
 site.use(basePath());
+site.use(minifyHTML());
 site.use(
   checkUrls({
     strict: true,
   }),
 );
-site.use(inline());
 
 interface TocItem {
   text: string;
