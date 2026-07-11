@@ -32,8 +32,8 @@ export default function BaseLayout(
           href="https://fonts.googleapis.com/css2?family=Inter:wght@100..900&display=swap"
           rel="stylesheet"
         />
-        <link rel="stylesheet" href="/styles/main.css" />
-        <link rel="stylesheet" href="/styles/themes.css" />
+        <link rel="stylesheet" href="/styles/main.css" inline />
+        <link rel="stylesheet" href="/styles/themes.css" inline />
         <link
           rel="alternate"
           type="application/rss+xml"
@@ -50,7 +50,7 @@ export default function BaseLayout(
         </div>
 
         <Footer />
-        <script src="/scripts/main.js" defer></script>
+        <script src="/scripts/main.js" inline></script>
       </body>
     </html>
   );
