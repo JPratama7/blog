@@ -1,0 +1,99 @@
+name: Jose Chasey Pratama
+summary: >-
+  Backend engineer with 3+ years of experience building scalable systems,
+  AI/LLM integrations, and data pipelines. Proven track record of optimizing
+  performance, reducing operational costs, and implementing robust DevOps
+  and observability practices across cloud and on-premise environments.
+
+experience:
+  - company: Rey.Id
+    role: Backend Engineer (Individual Contributor)
+    location: South Jakarta, Jakarta
+    start: "Nov 2024"
+    end: Present
+    highlights:
+      - Designed and implemented an event-driven architecture for seamless AI/LLM integration, optimizing system scalability and real-time decision-making by leveraging asynchronous communication to reduce latency by 75% while ensuring fault tolerance.
+      - Designed an in-house Data Extraction System in Python to process claim documents, capable of processing more than 1,000 documents per hour.
+      - Engineered a high-performance Kafka data pipeline to streamline processing of large-scale datasets, enhancing runtime efficiency by 50% and enabling real-time analytics for AI-driven applications.
+      - Used New Relic as the primary observability platform for logs, metrics, and distributed tracing, enabling faster incident detection and performance monitoring across backend services.
+      - Managed GitOps-based continuous delivery using ArgoCD, supporting declarative deployments and automated application lifecycle for the backend platform.
+
+  - company: PT. SVARA Innovation
+    role: Backend Developer
+    location: Bandung, West Java
+    start: "Apr 2024"
+    end: "Aug 2024"
+    highlights:
+      - Migrated and upgraded GitLab to on-premise servers, reducing operational costs by 30% through efficient resource utilization.
+      - Transitioned and enhanced CI/CD pipelines for the development environment, resulting in a 40% improvement in deployment speed and integration efficiency.
+      - Optimized NoSQL queries for radio timeline data retrieval, reducing query execution time by 50% and enhancing data processing efficiency.
+      - Set up and deployed Mailcow on an on-premise server, achieving a 99.9% uptime for email services.
+      - Optimized service tags by migrating from LoopBack 3 to Axum, improving system performance by 25%.
+      - Developed a synchronization service for online radio, ensuring seamless media playback with a 95% success rate across multiple devices.
+
+  - company: Universitas Logistik dan Bisnis Internasional
+    role: Backend Developer
+    location: Bandung, West Java
+    start: "Jul 2022"
+    end: "Apr 2024"
+    highlights:
+      - Designed and implemented a Golang and MariaDB integration for BNI payments, reducing transaction errors by 30% and enhancing processing efficiency.
+      - Optimized legacy Python code using FastAPI and Flask frameworks, decreasing bug reports by 20% and improving maintainability.
+      - Developed and enhanced the ITeung Chatbot using Golang, Python, and JavaScript for WhatsApp integration, resulting in a 15% increase in user satisfaction.
+      - Integrated Google API with academic systems using Golang, cutting data processing time by 15% and streamlining operations.
+      - Utilized GitHub and GitLab for effective version control and collaboration in a team of 6 developers.
+      - Implemented Redis, MariaDB, and MongoDB for optimized data storage and retrieval, reducing server response times by 20% and improving customer satisfaction.
+
+education:
+  - institution: Universitas Logistik dan Bisnis Internasional
+    degree: Bachelor of Applied Science (B.App.Sc.)
+    start: "2020"
+    end: "2024"
+
+skills:
+  - category: Interests
+    items:
+      - Low-Level Programming
+      - Algorithms
+      - Backend
+      - DevOps
+  - category: Languages
+    items:
+      - Go (Golang)
+      - Rust
+      - Python
+      - TypeScript/JavaScript
+      - PHP
+      - Java
+      - Kotlin
+  - category: Databases
+    items:
+      - MongoDB
+      - SQL
+      - MariaDB
+      - PostgreSQL
+      - MySQL
+      - SQL Server
+      - Redis
+      - SQLite
+      - Supabase
+  - category: DevOps
+    items:
+      - Docker
+      - Docker Swarm
+      - GitLab CI/CD
+      - GitHub Actions
+      - Docker Compose
+      - NGINX
+      - MinIO
+      - Komodo
+      - Portainer
+      - ArgoCD
+  - category: Observability
+    items:
+      - New Relic (logs, metrics, tracing)
+  - category: Version Control
+    items:
+      - Git
+      - GitHub
+      - GitLab
