@@ -63,7 +63,6 @@ site.use(
     },
   }),
 );
-
 site.use(basePath());
 site.use(
   checkUrls({
@@ -78,6 +77,11 @@ site.data("layout", "layouts/post.tsx", "/content/posts");
 site.data("type", "post", "/content/posts");
 
 site.data("title", "License", "/LICENSE.md");
+site.data(
+  "description",
+  "License and usage terms for the content of this blog.",
+  "/LICENSE.md",
+);
 
 site.copy("styles");
 site.copy("scripts");

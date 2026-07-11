@@ -1,6 +1,8 @@
 import type {} from "lume/jsx-runtime";
 
 export const layout = "layouts/base.tsx";
+export const description =
+  "Personal blog from Jose Pratama: notes on backend engineering, DevOps, AI integrations, and the tools that keep projects running.";
 
 interface Post {
   url: string;

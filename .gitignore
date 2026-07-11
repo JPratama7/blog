@@ -1,5 +1,6 @@
 # Deno cache
 .deno/
+deno.lock
 
 # Lume output
 _site/

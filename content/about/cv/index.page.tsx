@@ -2,6 +2,8 @@ import type {} from "lume/jsx-runtime";
 
 export const layout = "layouts/page.tsx";
 export const title = "Curriculum Vitae";
+export const description =
+  "Professional CV of Jose Chasey Pratama, backend engineer with experience in AI/LLM integrations, data pipelines, and DevOps.";
 
 interface Experience {
   company: string;

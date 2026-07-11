@@ -11,9 +11,7 @@ interface SearchHelper {
   pages(query: string, sort?: string): unknown[];
 }
 
-export default function* (
-  { search }: { search?: SearchHelper },
-) {
+export default function* ({ search }: { search?: SearchHelper }) {
   const posts = (search?.pages("type=post") ?? []) as Post[];
   const categories = new Map<string, Post[]>();
 
@@ -30,6 +28,8 @@ export default function* (
     url: "/categories/",
     title: "Categories",
     layout: "layouts/categories.tsx",
+    description:
+      "Browse all blog posts by topic, from Coding to Life",
     categories: Object.fromEntries(categories),
   };
 
@@ -38,6 +38,7 @@ export default function* (
       url: `/category/${category}/`,
       title: `Category: ${category}`,
       layout: "layouts/category.tsx",
+      description: `Posts about ${category} on Jose Pratama's blog.`,
       category,
       posts: categoryPosts,
     };
