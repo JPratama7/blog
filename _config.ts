@@ -68,7 +68,6 @@ site.ignore("README.md");
 
 site.use(lightningCSS());
 site.use(terser());
-site.use(inline());
 site.use(jsx());
 site.use(mdx());
 site.use(date());
