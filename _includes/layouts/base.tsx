@@ -34,6 +34,11 @@ export default function BaseLayout(
         />
         <link rel="stylesheet" href="/styles/main.css" inline />
         <link rel="stylesheet" href="/styles/themes.css" inline />
+        <script
+          dangerouslySetInnerHTML={{
+            __html: `(() => { const s = localStorage.getItem("color-mode"); const m = s === "dark" || s === "light" ? s : matchMedia("(prefers-color-scheme: dark)").matches ? "dark" : "light"; document.documentElement.dataset.mode = m; })();`,
+          }}
+        />
         <link
           rel="alternate"
           type="application/rss+xml"

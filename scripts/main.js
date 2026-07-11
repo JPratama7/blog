@@ -41,9 +41,39 @@ function initActiveNav() {
   }
 }
 
+function initColorMode() {
+  const toggles = document.querySelectorAll(".mode-toggle");
+
+  if (toggles.length === 0) return;
+
+  function currentMode() {
+    return document.documentElement.dataset.mode || "dark";
+  }
+
+  function updateLabels() {
+    const mode = currentMode();
+    const target = mode === "dark" ? "light" : "dark";
+    toggles.forEach((t) => {
+      t.setAttribute("aria-label", `Switch to ${target} mode`);
+    });
+  }
+
+  toggles.forEach((toggle) => {
+    toggle.addEventListener("click", () => {
+      const next = currentMode() === "dark" ? "light" : "dark";
+      document.documentElement.dataset.mode = next;
+      localStorage.setItem("color-mode", next);
+      updateLabels();
+    });
+  });
+
+  updateLabels();
+}
+
 function init() {
   initSidebar();
   initActiveNav();
+  initColorMode();
 }
 
 if (document.readyState === "loading") {
