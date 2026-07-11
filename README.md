@@ -7,9 +7,9 @@ A static personal blog built with [Lume](https://lume.land/) and [Deno](https://
 - **Deno-native**: no Node.js, no `node_modules`.
 - **MDX posts**: write rich, component-based content.
 - **Categories**: every post can have multiple categories; auto-generated category pages.
-- **Per-post themes**: choose from `default`, `light`, `warm`, `minimal`, or `forest` in the post frontmatter.
+- **Per-post themes**: choose from `default`, `warm`, `minimal`, or `forest` in the post frontmatter.
+- **Dark/light mode**: user-toggleable, follows system preference by default, persisted in localStorage. Works with every palette.
 - **Collapsible sidebar**: post pages show a table-of-contents sidebar that can be hidden.
-- **Dark-first design**: modern dark default with optional light theme.
 - **Social footer**: links to LinkedIn, Instagram, and GitHub.
 - **RSS/JSON feeds**: auto-generated at `/feed.rss` and `/feed.json`.
 
@@ -130,11 +130,14 @@ More text.
 
 ### Available themes
 
-- `default`: dark-first, clean and neutral
-- `light`: high-contrast light mode
+- `default`: clean and neutral (blue accent)
 - `warm`: earthy tones for personal writing
 - `minimal`: stark black and white, monospace
 - `forest`: green-tinted, calm
+
+Each palette supports both dark and light mode. Visitors can toggle via the
+sun/moon button in the nav or footer. The default follows the OS
+`prefers-color-scheme` setting; the choice is saved to `localStorage`.
 
 ## Customization
 
