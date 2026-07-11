@@ -19,6 +19,7 @@ import inline from "lume/plugins/inline.ts";
 import terser from "lume/plugins/terser.ts";
 import lightningCSS from "lume/plugins/lightningcss.ts";
 import minifyHTML from "lume/plugins/minify_html.ts";
+import ogImages from "lume/plugins/og_images.ts";
 
 import { sharedWebiconWebp } from "@assets";
 
@@ -100,10 +101,10 @@ site.use(
     },
   }),
 );
+site.use(ogImages());
 site.use(metas());
 site.use(inline());
 site.use(basePath());
-site.use(minifyHTML());
 site.use(
   checkUrls({
     strict: true,
@@ -200,5 +201,6 @@ site.process([".html"], (pages) => {
     article.parentNode?.insertBefore(sidebar, article);
   }
 });
+site.use(minifyHTML());
 
 export default site;
