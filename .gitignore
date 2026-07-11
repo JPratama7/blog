@@ -1,0 +1,18 @@
+# Deno cache
+.deno/
+
+# Lume output
+_site/
+
+# OS files
+.DS_Store
+Thumbs.db
+
+# Editor files
+.vscode/
+.idea/
+*.swp
+*.swo
+
+# Environment
+.env
