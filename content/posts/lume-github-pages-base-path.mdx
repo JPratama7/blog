@@ -1,0 +1,73 @@
+---
+title: Fixing GitHub Pages Paths in Lume
+date: 2026-07-11
+categories:
+  - deno
+  - web
+  - tools
+  - lume
+description: How I fixed broken CSS, links, and responsive images when deploying my Lume site to a GitHub Pages repository page.
+theme: default
+---
+
+After I wired up GitHub Actions to deploy my Lume site, the page loaded, but it looked like a plain HTML document. No CSS, no working navigation, and every hyperlink dumped me show 404.
+
+## The root cause
+
+This blog is a **repository page**, so GitHub Pages serves it under a subdirectory:
+
+```
+https://jpratama7.github.io/blog/
+```
+
+But every internal URL in the templates was written as a root-relative path:
+
+```tsx
+<link rel="stylesheet" href="/styles/main.css" />
+<a href="/about/">About Me</a>
+```
+
+That resolves to `https://jpratama7.github.io/styles/main.css` instead of `https://jpratama7.github.io/blog/styles/main.css`. The browser requests assets from the domain root, and none of them exist there.
+
+## The first fix: base_path
+
+Lume has a plugin made exactly for this. `base_path` reads the `location` pathname from `_config.ts` and rewrites every root-relative `href`, `src`, `srcset`, and CSS `url()` to include the subpath.
+
+```ts
+import basePath from "lume/plugins/base_path.ts";
+
+const site = lume({
+  location: new URL("https://jpratama7.github.io/blog/"),
+});
+
+site.use(basePath());
+```
+
+For local development the `location` pathname is `/`, so the URLs stay unchanged. For GitHub Pages the pathname is `/blog/`, so `/styles/main.css` becomes `/blog/styles/main.css`.
+
+## The second issue: plugin order
+
+Once CSS and links were working, I noticed the images on my About page were broken. The URLs looked correct with the `/blog/` prefix, but the actual files were missing.
+
+I use Lume's `picture` and `transform_images` plugins to generate `avif`, `webp`, and fallback variants. Those plugins generate the `srcset` URLs in the final HTML. The issue was that `base_path` has to run **after** them, or it never sees the generated URLs to rewrite them.
+
+The correct order is:
+
+```ts
+site.use(picture());
+site.use(transformImages());
+site.use(basePath()); // must come last
+```
+
+After swapping the order, the generated `Picture1-180w.avif` paths were correctly prefixed and the images loaded.
+
+## Summary
+
+If you deploy a Lume site to a GitHub Pages repository page:
+
+1. Set `location` to the full URL including the repo name.
+2. Use `base_path()` to fix root-relative URLs.
+3. Register `base_path()` **after** `picture()` and `transform_images()`.
+4. Leave external URLs (fonts, social links) as-is — the plugin only touches paths starting with `/`.
+
+With that, the same build works for both `deno task serve` and GitHub Pages.
