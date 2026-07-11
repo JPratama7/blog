@@ -120,12 +120,12 @@ site.use(lightningCSS());
 site.use(terser());
 site.use(metas());
 site.use(inline());
-site.use(basePath());
 site.use(
   checkUrls({
     strict: true,
   }),
 );
+site.use(basePath());
 
 interface TocItem {
   text: string;
