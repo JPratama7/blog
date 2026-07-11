@@ -5,7 +5,8 @@ import date from "lume/plugins/date.ts";
 import slugifyUrls from "lume/plugins/slugify_urls.ts";
 import nav from "lume/plugins/nav.ts";
 import search from "lume/plugins/search.ts";
-import codeHighlight from "lume/plugins/code_highlight.ts";
+import prism from "lume/plugins/prism.ts";
+import "prismjs/components/prism-typescript.js";
 import sitemap from "lume/plugins/sitemap.ts";
 import feed from "lume/plugins/feed.ts";
 import robots from "lume/plugins/robots.ts";
@@ -67,15 +68,28 @@ site.add("assets");
 
 site.ignore("README.md");
 
-site.use(lightningCSS());
-site.use(terser());
 site.use(jsx());
 site.use(mdx());
+site.use(
+  prism({
+    theme: [
+      {
+        name: "tomorrow",
+        cssFile: "/styles/main.css",
+        placeholder: "/* prism-dark */",
+      },
+      {
+        name: "okaidia",
+        cssFile: "/styles/main.css",
+        placeholder: "/* prism-light */",
+      },
+    ],
+  }),
+);
 site.use(date());
 site.use(slugifyUrls());
 site.use(nav());
 site.use(search());
-site.use(codeHighlight());
 site.use(sitemap());
 site.use(robots());
 site.use(picture());
@@ -102,6 +116,8 @@ site.use(
   }),
 );
 site.use(ogImages());
+site.use(lightningCSS());
+site.use(terser());
 site.use(metas());
 site.use(inline());
 site.use(basePath());
